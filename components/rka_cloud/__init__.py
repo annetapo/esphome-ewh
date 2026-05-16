@@ -93,7 +93,7 @@ async def to_code(config):
     cg.add(var.set_port(config[CONF_PORT]))
 
     # enable ota subscription
-    cg.add_define("USE_OTA_STATE_CALLBACK")
+    cg.add_define("USE_OTA_STATE_LISTENER")
 
     if CONF_PAIR in config:
         conf = config[CONF_PAIR]
