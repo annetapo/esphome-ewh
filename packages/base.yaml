@@ -1,5 +1,5 @@
 substitutions:
-  project_branch: master
+  project_branch: alexey-esphome-2026.4-zanussi
   # project version
   # project_version: $project_branch
   project_version: 2025-master
