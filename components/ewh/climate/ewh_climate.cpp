@@ -69,7 +69,8 @@ ewh_mode_t::Mode EWHClimate::to_wh_mode_(ClimateMode mode, const std::string &pr
 
 void EWHClimate::control(const ClimateCall &call) {
   const auto mode = call.get_mode().value_or(this->mode);
-  const char *preset = call.get_custom_preset().c_str();
+  const auto requested_preset = call.has_custom_preset() ? call.get_custom_preset() : this->get_custom_preset();
+  const auto preset = requested_preset.empty() ? std::string(PRESET_MODE3) : requested_preset;
   const auto wh_mode = this->to_wh_mode_(mode, preset);
   const auto temp = call.get_target_temperature().value_or(this->target_temperature);
   if (std::isnan(temp)) {
